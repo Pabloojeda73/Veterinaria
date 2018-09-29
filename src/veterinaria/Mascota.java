@@ -20,8 +20,13 @@ public class Mascota {
     private String raza;
     private String colorPelo;
     private LocalDate fecNac;
-    //VER EL TEMA DEL ARRAYLIST SI ASI ESTA BIEN O CONSTRUIRLO
-    private ArrayList pesoUltima10Visitas;
+    private boolean vacunado;
+    private boolean enfermo;
+    private boolean herido;
+    private boolean bañadoPeinado;
+    private boolean castrado;
+    //VER EL TEMA DEL ARRAYLIST SI ASI ESTA BIEN O CONSTRUIRLO(poner aca si se corrigio o no)
+    private ArrayList pesoPromedio10Visitas;
     private String pesoActual;
 
     public Mascota(int id, String alias, String sexo, String especie, String raza, String colorPelo, LocalDate fecNac, ArrayList pesoUltima10Visitas, String pesoActual) {
@@ -32,7 +37,7 @@ public class Mascota {
         this.raza = raza;
         this.colorPelo = colorPelo;
         this.fecNac = fecNac;
-        this.pesoUltima10Visitas = pesoUltima10Visitas;
+        this.pesoPromedio10Visitas = pesoUltima10Visitas;
         this.pesoActual = pesoActual;
     }
 
@@ -93,11 +98,11 @@ public class Mascota {
     }
 
     public ArrayList getPesoUltima10Visitas() {
-        return pesoUltima10Visitas;
+        return pesoPromedio10Visitas;
     }
 
     public void setPesoUltima10Visitas(ArrayList pesoUltima10Visitas) {
-        this.pesoUltima10Visitas = pesoUltima10Visitas;
+        this.pesoPromedio10Visitas = pesoUltima10Visitas;
     }
 
     public String getPesoActual() {
