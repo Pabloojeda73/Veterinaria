@@ -5,8 +5,7 @@
  */
 package veterinaria.modelo;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -19,17 +18,16 @@ public class Mascota {
     private String especie;
     private String raza;
     private String colorPelo;
-    private LocalDate fecNac;
+    private Date fecNac;
     private boolean vacunado;
     private boolean enfermo;
     private boolean herido;
     private boolean bañadoPeinado;
     private boolean castrado;
-    //VER EL TEMA DEL ARRAYLIST SI ASI ESTA BIEN O CONSTRUIRLO(poner aca si se corrigio o no)
-    private ArrayList pesoPromedio10Visitas;
-    private String pesoActual;
+    private double pesoPromedio10Visitas;
+    private double pesoActual;
 
-    public Mascota(int id, String alias, String sexo, String especie, String raza, String colorPelo, LocalDate fecNac, ArrayList pesoUltima10Visitas, String pesoActual) {
+    public Mascota(int id, String alias, String sexo, String especie, String raza, String colorPelo, Date fecNac, double pesoUltima10Visitas, double pesoActual) {
         this.id = id;
         this.alias = alias;
         this.sexo = sexo;
@@ -89,30 +87,30 @@ public class Mascota {
         this.colorPelo = colorPelo;
     }
 
-    public LocalDate getFecNac() {
+    public Date getFecNac() {
         return fecNac;
     }
 
-    public void setFecNac(LocalDate fecNac) {
+    public void setFecNac(Date fecNac) {
         this.fecNac = fecNac;
     }
 
-    public ArrayList getPesoUltima10Visitas() {
+    public double getPesoUltima10Visitas() {
         return pesoPromedio10Visitas;
     }
 
-    public void setPesoUltima10Visitas(ArrayList pesoUltima10Visitas) {
+    public void setPesoUltima10Visitas(double pesoUltima10Visitas) {
         this.pesoPromedio10Visitas = pesoUltima10Visitas;
     }
 
-    public String getPesoActual() {
+    public double getPesoActual() {
         return pesoActual;
     }
 
-    public void setPesoActual(String pesoActual) {
+    public void setPesoActual(double pesoActual) {
         this.pesoActual = pesoActual;
     }
     
-    
+ 
     
 }

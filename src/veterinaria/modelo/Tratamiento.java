@@ -10,6 +10,10 @@ package veterinaria.modelo;
  * @author PabloOjeda
  */
 public class Tratamiento {
-    
+    private int id;
+    private String tipo;
+    private String descripcion;
+    private double importe;
+    private boolean activo;
 
 }
