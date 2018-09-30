@@ -12,8 +12,8 @@ import java.util.List;
  * @author PabloOjeda
  */
 public class Cliente {
-    private int id;
-    private int dni;
+    private int id = -1;
+    private String dni;
     private String apellidoNombre;
     private String direccion;
     private String telefono;
@@ -23,10 +23,10 @@ public class Cliente {
     
     //Agrego el constructor por defecto (Martin)
     public Cliente() {
-        
+        this.id = -1;
     }
 
-    public Cliente(int id, int dni, String apellidoNombre, String direccion, String telefono, String unContacto) {
+    public Cliente(int id, String dni, String apellidoNombre, String direccion, String telefono, String unContacto) {
         this.id = id;
         this.dni = dni;
         this.apellidoNombre = apellidoNombre;
@@ -43,11 +43,11 @@ public class Cliente {
         this.id = id;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -89,5 +89,10 @@ public class Cliente {
 
     public void setMascotas(List<Mascota> mascotas) {
         this.mascotas = mascotas;
+    }
+    
+    @Override
+    public String toString() {
+        return id + " - " + apellidoNombre;
     }
 }
