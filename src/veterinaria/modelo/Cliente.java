@@ -5,6 +5,8 @@
  */
 package veterinaria.modelo;
 
+import java.util.List;
+
 /**
  *
  * @author PabloOjeda
@@ -14,12 +16,17 @@ public class Cliente {
     private int dni;
     private String apellidoNombre;
     private String direccion;
-    private int telefono;
+    private String telefono;
     private String unContacto;
-    //RE VEER EL TEMA DE MASCOTA
-    private Mascota mascota;
+    //Probemos trabajarlas añadiendo todas las mascotas en una lista (Martin)
+    private List<Mascota> mascotas;
+    
+    //Agrego el constructor por defecto (Martin)
+    public Cliente() {
+        
+    }
 
-    public Cliente(int id, int dni, String apellidoNombre, String direccion, int telefono, String unContacto) {
+    public Cliente(int id, int dni, String apellidoNombre, String direccion, String telefono, String unContacto) {
         this.id = id;
         this.dni = dni;
         this.apellidoNombre = apellidoNombre;
@@ -60,11 +67,11 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -75,7 +82,12 @@ public class Cliente {
     public void setUnContacto(String unContacto) {
         this.unContacto = unContacto;
     }
-    
-    
-    
+
+    public List<Mascota> getMascotas() {
+        return mascotas;
+    }
+
+    public void setMascotas(List<Mascota> mascotas) {
+        this.mascotas = mascotas;
+    }
 }
