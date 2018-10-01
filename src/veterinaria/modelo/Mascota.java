@@ -13,6 +13,9 @@ import java.util.Date;
  */
 public class Mascota {
     private int id;
+    //para que funcione el metodo que agregué en ClienteData de buscarMascotas por cliente
+    //habría que agregar un atributo "Cliente duenio" con su getter y setter.
+    
     private String alias;
     private String sexo;
     private String especie;
@@ -39,6 +42,10 @@ public class Mascota {
         this.pesoActual = pesoActual;
     }
 
+    public Mascota() {
+        
+    }
+    
     public int getId() {
         return id;
     }
