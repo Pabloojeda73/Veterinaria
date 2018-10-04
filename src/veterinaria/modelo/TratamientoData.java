@@ -54,7 +54,35 @@ public class TratamientoData {
         }
     }
     
-    
+    public List<Tratamiento> obtenerTratamientos () {
+        List<Tratamiento> tratamientos = new ArrayList<>();
+        
+        String sql = "SELECT * FROM Tratamientos;";
+        
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            
+            Tratamiento tratamiento;
+            while (rs.next()) {
+                tratamiento = new Tratamiento();
+                tratamiento.setActivo(rs.getBoolean("activo"));
+                tratamiento.setDescripcion(rs.getString("descripcion"));
+                tratamiento.setId(rs.getInt("id"));
+                tratamiento.setImporte(rs.getDouble("importe"));
+                tratamiento.setTipo(rs.getString("tipo"));
+                
+                tratamientos.add(tratamiento);
+            }
+            
+            statement.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(TratamientoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return tratamientos;
+    }
     
     
     //main para probar y borrar
@@ -71,7 +99,7 @@ public class TratamientoData {
         tratamientoData.guardarTratamiento(tratamiento);
         System.out.println("El id del nuevo tratamiento es: " + tratamiento.getId());*/
         
-        
+        System.out.println(tratamientoData.obtenerTratamientos());
     }
     
     
