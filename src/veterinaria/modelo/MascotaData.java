@@ -6,6 +6,7 @@
 package veterinaria.modelo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,7 +35,7 @@ public class MascotaData {
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 statement.setString(1, mascota.getAlias());
-                statement.setLocalDate(2, LocalDate.valueOf(mascota.getFecNac()));
+                statement.setDate(2, Date.valueOf(mascota.getFecNac()));
                 statement.setBoolean(3, mascota.getActivo());
                 
                 statement.executeUpdate();
@@ -66,7 +67,7 @@ public class MascotaData {
                 mascota = new Mascota();
                 mascota.setId(resultSet.getInt("id"));
                 mascota.setAlias(resultSet.getString("alias"));
-                mascota.setFecNac(resultSet.getLocalDate("FecNac").toLocalDate());
+                mascota.setFecNac(resultSet.getDate("FecNac").toLocalDate());
 
                 mascotas.add(mascota);
             }      

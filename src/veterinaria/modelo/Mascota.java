@@ -5,6 +5,7 @@
  */
 package veterinaria.modelo;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -21,7 +22,7 @@ public class Mascota {
     private String especie;
     private String raza;
     private String colorPelo;
-    private Date FecNac;
+    private LocalDate FecNac;
     private boolean vacunado;
     private boolean enfermo;
     private boolean herido;
@@ -30,7 +31,7 @@ public class Mascota {
     private double pesoPromedio10Visitas;
     private double pesoActual;
 
-    public Mascota(int id, int id_duenio, String alias, String sexo, String especie, String raza, String colorPelo, Date fecNac, double pesoUltima10Visitas, double pesoActual) {
+    public Mascota(int id, int id_duenio, String alias, String sexo, String especie, String raza, String colorPelo, LocalDate fecNac, double pesoUltima10Visitas, double pesoActual) {
         this.id = id;
         this.id_duenio =id_duenio; //agregado(pablo)
         this.alias = alias;
@@ -95,11 +96,11 @@ public class Mascota {
         this.colorPelo = colorPelo;
     }
 
-    public Date getFecNac() {
+    public LocalDate getFecNac() {
         return FecNac;
     }
 
-    public void setFecNac(Date fecNac) {
+    public void setFecNac(LocalDate fecNac) {
         this.FecNac = fecNac;
     }
 
