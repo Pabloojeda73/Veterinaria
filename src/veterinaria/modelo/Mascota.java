@@ -16,7 +16,7 @@ public class Mascota {
     private int id;
     //para que funcione el metodo que agregué en ClienteData de buscarMascotas por cliente
     //habría que agregar un atributo "Cliente duenio" con su getter y setter.
-    private int id_duenio; //agregado(pablo)
+    private Cliente duenio; //agregado(pablo)
     private String alias;
     private String sexo;
     private String especie;
@@ -31,9 +31,9 @@ public class Mascota {
     private double pesoPromedio10Visitas;
     private double pesoActual;
 
-    public Mascota(int id, int id_duenio, String alias, String sexo, String especie, String raza, String colorPelo, LocalDate fecNac, double pesoUltima10Visitas, double pesoActual) {
+    public Mascota(int id, Cliente duenio, String alias, String sexo, String especie, String raza, String colorPelo, LocalDate fecNac, double pesoUltima10Visitas, double pesoActual) {
         this.id = id;
-        this.id_duenio =id_duenio; //agregado(pablo)
+        this.duenio =duenio; //agregado(pablo)
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
@@ -120,12 +120,12 @@ public class Mascota {
         this.pesoActual = pesoActual;
     }
 
-    public int getId_duenio() {
-        return id_duenio;
+    public Cliente getDuenio() {
+        return duenio;
     }
 
-    public void setId_duenio(int id_duenio) {
-        this.id_duenio = id_duenio;
+    public void setDuenio(Cliente duenio) {
+        this.duenio = duenio;
     }
 
     public boolean isVacunado() {

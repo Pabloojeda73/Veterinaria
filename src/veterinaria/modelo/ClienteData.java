@@ -125,7 +125,7 @@ public class ClienteData {
                 mascota = new Mascota();
                 mascota.setAlias(rs.getString("alias"));
                 mascota.setColorPelo(rs.getString("colorDePelo"));
-                //mascota.setDuenio(obtenerCliente(rs.getInt("id_cliente")));
+                mascota.setDuenio(obtenerCliente(rs.getInt("id_cliente")));
                 mascota.setEspecie(rs.getString("especie"));
                 mascota.setRaza(rs.getString("raza"));
                 mascota.setSexo(rs.getString("sexo"));
@@ -166,14 +166,14 @@ public class ClienteData {
             //System.out.println(clienteObtenido);
             
             //Probar obtenerMascotas(cliente)
-            //Cliente cliente = clienteData.obtenerCliente(3);
-            //List<Mascota> mascotas = clienteData.obtenerMascotas(cliente);
+            /*Cliente cliente = clienteData.obtenerCliente(1);
+            List<Mascota> mascotas = clienteData.obtenerMascotas(cliente);
             
-            //for (Mascota m: mascotas) {
-            //    if(m.getDuenio().getId() == cliente.getId()) {
-            //        System.out.println(m.getAlias());
-            //    }
-            //}
+            for (Mascota m: mascotas) {
+                if(m.getDuenio().getId() == cliente.getId()) {
+                    System.out.println(m.getAlias());
+                }
+            }*/
             
             
         } catch (ClassNotFoundException ex) {
