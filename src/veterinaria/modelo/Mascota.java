@@ -14,22 +14,25 @@ import java.util.Date;
  */
 public class Mascota {
     private int id;
-    //para que funcione el metodo que agregué en ClienteData de buscarMascotas por cliente
-    //habría que agregar un atributo "Cliente duenio" con su getter y setter.
-    private Cliente duenio; //agregado(pablo)
+    private Cliente duenio;
     private String alias;
     private String sexo;
     private String especie;
     private String raza;
     private String colorPelo;
     private LocalDate FecNac;
+    
+    //me parece que habria que sacarlas de aca porque estos 
+    //datos los vamos a tener guardados en la base de datos
     private boolean vacunado;
     private boolean enfermo;
     private boolean herido;
     private boolean bañadoPeinado;
     private boolean castrado;
     private double pesoPromedio10Visitas;
-    private double pesoActual;
+    
+    
+    private double pesoMedio;
 
     public Mascota(int id, Cliente duenio, String alias, String sexo, String especie, String raza, String colorPelo, LocalDate fecNac, double pesoUltima10Visitas, double pesoActual) {
         this.id = id;
@@ -41,7 +44,7 @@ public class Mascota {
         this.colorPelo = colorPelo;
         this.FecNac = fecNac;
         this.pesoPromedio10Visitas = pesoUltima10Visitas;
-        this.pesoActual = pesoActual;
+        this.pesoMedio = pesoActual;
     }
 
     public Mascota() {
@@ -112,12 +115,12 @@ public class Mascota {
         this.pesoPromedio10Visitas = pesoUltima10Visitas;
     }
 
-    public double getPesoActual() {
-        return pesoActual;
+    public double getPesoMedio() {
+        return pesoMedio;
     }
 
-    public void setPesoActual(double pesoActual) {
-        this.pesoActual = pesoActual;
+    public void setPesoMedio(double pesoMedio) {
+        this.pesoMedio = pesoMedio;
     }
 
     public Cliente getDuenio() {
