@@ -31,12 +31,17 @@ public class MascotaData {
     public void guardarMAscota(Mascota mascota){
         try {
             
-            String sql = "INSERT INTO alumno (alias, fecNac, activo) VALUES ( ? , ? , ? );";
+            String sql = "INSERT INTO alumno (alias, sexo, especie, raza, colorDePelo, fecNac, pesoMedio, pesoActual) VALUES ( ? , ? , ?, ?, ?, ?, ?, ?);";
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 statement.setString(1, mascota.getAlias());
-                statement.setDate(2, Date.valueOf(mascota.getFecNac()));
-                statement.setBoolean(3, mascota.getActivo());
+                statement.setString(2, mascota.getSexo());
+                statement.setString(3, mascota.getEspecie());
+                statement.setString(4, mascota.getRaza());
+                statement.setString(5, mascota.getColorDePelo());
+                statement.setDate(6, Date.valueOf(mascota.getFecNac()));
+                statement.setDouble(7, mascota.getPesoMedio());
+                statement.setDouble(8, mascota.getPesoActual());
                 
                 statement.executeUpdate();
                 

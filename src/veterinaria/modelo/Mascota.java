@@ -6,7 +6,6 @@
 package veterinaria.modelo;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  *
@@ -19,7 +18,7 @@ public class Mascota {
     private String sexo;
     private String especie;
     private String raza;
-    private String colorPelo;
+    private String colorDePelo;
     private LocalDate FecNac;
     
     //me parece que habria que sacarlas de aca porque estos 
@@ -29,22 +28,20 @@ public class Mascota {
     private boolean herido;
     private boolean bañadoPeinado;
     private boolean castrado;
-    private double pesoPromedio10Visitas;
-    
-    
     private double pesoMedio;
+    private double pesoActual;
 
-    public Mascota(int id, Cliente duenio, String alias, String sexo, String especie, String raza, String colorPelo, LocalDate fecNac, double pesoUltima10Visitas, double pesoActual) {
+    public Mascota(int id, Cliente duenio, String alias, String sexo, String especie, String raza, String colorPelo, LocalDate fecNac, double pesoMedio, double pesoActual) {
         this.id = id;
         this.duenio =duenio; //agregado(pablo)
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
         this.raza = raza;
-        this.colorPelo = colorPelo;
+        this.colorDePelo = colorPelo;
         this.FecNac = fecNac;
-        this.pesoPromedio10Visitas = pesoUltima10Visitas;
-        this.pesoMedio = pesoActual;
+        this.pesoMedio = pesoMedio;
+        this.pesoActual = pesoActual;
     }
 
     public Mascota() {
@@ -92,11 +89,11 @@ public class Mascota {
     }
 
     public String getColorPelo() {
-        return colorPelo;
+        return colorDePelo;
     }
 
-    public void setColorPelo(String colorPelo) {
-        this.colorPelo = colorPelo;
+    public void setColorPelo(String colorDePelo) {
+        this.colorDePelo = colorDePelo;
     }
 
     public LocalDate getFecNac() {
@@ -107,12 +104,12 @@ public class Mascota {
         this.FecNac = fecNac;
     }
 
-    public double getPesoUltima10Visitas() {
-        return pesoPromedio10Visitas;
+    public double pesoMedio() {
+        return pesoMedio;
     }
 
-    public void setPesoUltima10Visitas(double pesoUltima10Visitas) {
-        this.pesoPromedio10Visitas = pesoUltima10Visitas;
+    public void setpesoMedio(double pesoMedio) {
+        this.pesoMedio = pesoMedio;
     }
 
     public double getPesoMedio() {
@@ -172,11 +169,11 @@ public class Mascota {
     }
 
     public double getPesoPromedio10Visitas() {
-        return pesoPromedio10Visitas;
+        return pesoMedio;
     }
 
-    public void setPesoPromedio10Visitas(double pesoPromedio10Visitas) {
-        this.pesoPromedio10Visitas = pesoPromedio10Visitas;
+    public void setPesoPromedio10Visitas(double pesoMedio) {
+        this.pesoMedio = pesoMedio;
     }
 
     String getNombre() {
@@ -186,8 +183,22 @@ public class Mascota {
     boolean getActivo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public double getPesoActual() {
+        return pesoActual;
+    }
+
+    public void setPesoActual(double pesoActual) {
+        this.pesoActual = pesoActual;
+    }
+
+    public String getColorDePelo() {
+        return colorDePelo;
+    }
+
+    public void setColorDePelo(String colorDePelo) {
+        this.colorDePelo = colorDePelo;
+    }
     
-    
- 
     
 }
