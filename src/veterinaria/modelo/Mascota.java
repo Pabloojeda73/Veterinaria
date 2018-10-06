@@ -5,8 +5,6 @@
  */
 package veterinaria.modelo;
 
-import java.time.LocalDate;
-
 /**
  *
  * @author PabloOjeda
@@ -20,26 +18,26 @@ public class Mascota {
     private String sexo;
     private String especie;
     private String raza;
-    private String colorPelo;
-    private LocalDate fecNac;
+    private String colorDePelo;
+    private String fecNac;
     private boolean vacunado;
     private boolean enfermo;
     private boolean herido;
     private boolean bañadoPeinado;
     private boolean castrado;
-    private double pesoPromedio10Visitas;
+    private double pesoMedio;
     private double pesoActual;
 
-    public Mascota(int id, int id_duenio, String alias, String sexo, String especie, String raza, String colorPelo, LocalDate fecNac, double pesoUltima10Visitas, double pesoActual) {
+    public Mascota(int id, int id_duenio, String alias, String sexo, String especie, String raza, String colorPelo, String fecNac, double pesoMedio, double pesoActual) {
         this.id = id;
         this.id_duenio =id_duenio; //agregado(pablo)
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
         this.raza = raza;
-        this.colorPelo = colorPelo;
+        this.colorDePelo = colorPelo;
         this.fecNac = fecNac;
-        this.pesoPromedio10Visitas = pesoUltima10Visitas;
+        this.pesoMedio = pesoMedio;
         this.pesoActual = pesoActual;
     }
 
@@ -87,28 +85,28 @@ public class Mascota {
         this.raza = raza;
     }
 
-    public String getColorPelo() {
-        return colorPelo;
+    public String getColorDePelo() {
+        return colorDePelo;
     }
 
     public void setColorPelo(String colorPelo) {
-        this.colorPelo = colorPelo;
+        this.colorDePelo = colorPelo;
     }
 
-    public LocalDate getFecNac() {
+    public String getFecNac() {
         return fecNac;
     }
 
-    public void setFecNac(LocalDate fecNac) {
+    public void setFecNac(String fecNac) {
         this.fecNac = fecNac;
     }
 
-    public double getPesoUltima10Visitas() {
-        return pesoPromedio10Visitas;
+    public double getPesoMedio() {
+        return pesoMedio;
     }
 
-    public void setPesoUltima10Visitas(double pesoUltima10Visitas) {
-        this.pesoPromedio10Visitas = pesoUltima10Visitas;
+    public void setpesoMedio(double pesoMedio) {
+        this.pesoMedio = pesoMedio;
     }
 
     public double getPesoActual() {
@@ -167,12 +165,10 @@ public class Mascota {
         this.castrado = castrado;
     }
 
-    public double getPesoPromedio10Visitas() {
-        return pesoPromedio10Visitas;
-    }
+    
 
-    public void setPesoPromedio10Visitas(double pesoPromedio10Visitas) {
-        this.pesoPromedio10Visitas = pesoPromedio10Visitas;
+    public void setPesoPromedio10Visitas(double pesoMedio) {
+        this.pesoMedio = pesoMedio;
     }
 
     String getNombre() {
@@ -182,8 +178,11 @@ public class Mascota {
     boolean getActivo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    void setPesoMedio(double aDouble) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
-    
- 
-    
+        
 }

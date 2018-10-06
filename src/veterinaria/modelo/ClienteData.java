@@ -129,8 +129,8 @@ public class ClienteData {
                 mascota.setEspecie(rs.getString("especie"));
                 mascota.setRaza(rs.getString("raza"));
                 mascota.setSexo(rs.getString("sexo"));
-                mascota.setFecNac(rs.getLocalDate("fecNac"));
-                mascota.setPesoUltima10Visitas(rs.getDouble("pesoMedio"));
+                mascota.setFecNac(rs.getString("fecNac"));
+                mascota.setPesoMedio(rs.getDouble("pesoMedio"));
                 mascota.setPesoActual(rs.getDouble("pesoActual"));
                 
                 mascotas.add(mascota);
