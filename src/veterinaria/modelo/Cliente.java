@@ -18,10 +18,9 @@ public class Cliente {
     private String direccion;
     private String telefono;
     private String unContacto;
-    //Probemos trabajarlas añadiendo todas las mascotas en una lista (Martin)
+    
     private List<Mascota> mascotas;
     
-    //Agrego el constructor por defecto (Martin)
     public Cliente() {
         this.id = -1;
     }
