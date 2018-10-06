@@ -101,7 +101,7 @@ public class ClienteData {
                 cliente.setId(rs.getInt("id"));
                 cliente.setApellidoNombre(rs.getString("apellidoNombre"));
                 cliente.setDireccion(rs.getString("direccion"));
-                cliente.setDni(rs.getString("direccion"));
+                cliente.setDni(rs.getString("dni"));
                 cliente.setTelefono(rs.getString("telefono"));
                 cliente.setUnContacto(rs.getString("unContacto"));
                 
@@ -162,6 +162,27 @@ public class ClienteData {
             System.out.println("Error al borrar un cliente." + ex.getMessage());
         }
     }
+    
+    public void actualizarCliente (Cliente cliente) {
+        try {
+            String sql = "UPDATE Clientes SET apellidoNombre = ? , dni = ? , "
+                    + "direccion = ? , telefono = ? , unContacto = ? WHERE id = ? ";
+            
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, cliente.getApellidoNombre());
+            statement.setString(2, cliente.getDni());
+            statement.setString(3, cliente.getDireccion());
+            statement.setString(4, cliente.getTelefono());
+            statement.setString(5, cliente.getUnContacto());
+            statement.setInt(6, cliente.getId());
+            
+            statement.executeUpdate();
+            statement.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al actualizar el Cliente. " + ex.getMessage());
+        }
+    }
 
     //main para probar la clase, BORRAR
     public static void main(String[] args) {
@@ -169,7 +190,11 @@ public class ClienteData {
             Conexion conexion = new Conexion("jdbc:mysql://localhost/veterinaria", "root", "");
             ClienteData clienteData = new ClienteData(conexion);
 
-            clienteData.borrarCliente(5);
+            //Cliente cliente = clienteData.obtenerCliente(5);
+            //cliente.setDireccion("Lavalle 2222");
+            //cliente.setTelefono("26647898");
+            //cliente.setDni("29767584");
+            //clienteData.actualizarCliente(cliente);
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
