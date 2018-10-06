@@ -5,40 +5,68 @@
  */
 package veterinaria.modelo;
 
+<<<<<<< HEAD
+=======
+import java.time.LocalDate;
+import java.util.Date;
+
+>>>>>>> e6309a9693f8d6f78a06bba54f7196746cf3aad5
 /**
  *
  * @author PabloOjeda
  */
 public class Mascota {
     private int id;
-    //para que funcione el metodo que agregué en ClienteData de buscarMascotas por cliente
-    //habría que agregar un atributo "Cliente duenio" con su getter y setter.
-    private int id_duenio; //agregado(pablo)
+    private Cliente duenio;
     private String alias;
     private String sexo;
     private String especie;
     private String raza;
+<<<<<<< HEAD
     private String colorDePelo;
     private String fecNac;
+=======
+    private String colorPelo;
+    private LocalDate FecNac;
+    
+    //me parece que habria que sacarlas de aca porque estos 
+    //datos los vamos a tener guardados en la base de datos
+>>>>>>> e6309a9693f8d6f78a06bba54f7196746cf3aad5
     private boolean vacunado;
     private boolean enfermo;
     private boolean herido;
     private boolean bañadoPeinado;
     private boolean castrado;
+<<<<<<< HEAD
     private double pesoMedio;
     private double pesoActual;
 
     public Mascota(int id, int id_duenio, String alias, String sexo, String especie, String raza, String colorPelo, String fecNac, double pesoMedio, double pesoActual) {
+=======
+    private double pesoPromedio10Visitas;
+    
+    
+    private double pesoMedio;
+
+    public Mascota(int id, Cliente duenio, String alias, String sexo, String especie, String raza, String colorPelo, LocalDate fecNac, double pesoUltima10Visitas, double pesoActual) {
+>>>>>>> e6309a9693f8d6f78a06bba54f7196746cf3aad5
         this.id = id;
-        this.id_duenio =id_duenio; //agregado(pablo)
+        this.duenio =duenio; //agregado(pablo)
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
         this.raza = raza;
+<<<<<<< HEAD
         this.colorDePelo = colorPelo;
         this.fecNac = fecNac;
         this.pesoMedio = pesoMedio;
         this.pesoActual = pesoActual;
+=======
+        this.colorPelo = colorPelo;
+        this.FecNac = fecNac;
+        this.pesoPromedio10Visitas = pesoUltima10Visitas;
+        this.pesoMedio = pesoActual;
+>>>>>>> e6309a9693f8d6f78a06bba54f7196746cf3aad5
     }
 
     public Mascota() {
@@ -93,12 +121,21 @@ public class Mascota {
         this.colorDePelo = colorPelo;
     }
 
+<<<<<<< HEAD
     public String getFecNac() {
         return fecNac;
     }
 
     public void setFecNac(String fecNac) {
         this.fecNac = fecNac;
+=======
+    public LocalDate getFecNac() {
+        return FecNac;
+    }
+
+    public void setFecNac(LocalDate fecNac) {
+        this.FecNac = fecNac;
+>>>>>>> e6309a9693f8d6f78a06bba54f7196746cf3aad5
     }
 
     public double getPesoMedio() {
@@ -109,20 +146,20 @@ public class Mascota {
         this.pesoMedio = pesoMedio;
     }
 
-    public double getPesoActual() {
-        return pesoActual;
+    public double getPesoMedio() {
+        return pesoMedio;
     }
 
-    public void setPesoActual(double pesoActual) {
-        this.pesoActual = pesoActual;
+    public void setPesoMedio(double pesoMedio) {
+        this.pesoMedio = pesoMedio;
     }
 
-    public int getId_duenio() {
-        return id_duenio;
+    public Cliente getDuenio() {
+        return duenio;
     }
 
-    public void setId_duenio(int id_duenio) {
-        this.id_duenio = id_duenio;
+    public void setDuenio(Cliente duenio) {
+        this.duenio = duenio;
     }
 
     public boolean isVacunado() {
