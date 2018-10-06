@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,12 +30,22 @@ public class MascotaData {
     public void guardarMAscota(Mascota mascota){
         try {
             
-            String sql = "INSERT INTO alumno (alias, fecNac, activo) VALUES ( ? , ? , ? );";
+            String sql = "INSERT INTO alumno (alias, sexo, especie, raza, colorDePelo, fecNac, pesoMedio, pesoActual) VALUES ( ? , ? , ? , ?, ?, ?, ?, ?);";
 
             try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 statement.setString(1, mascota.getAlias());
+<<<<<<< HEAD
+                statement.setString(2, mascota.getSexo());
+                statement.setString(3, mascota.getEspecie());
+                statement.setString(4, mascota.getRaza());
+                statement.setString(5, mascota.getColorDePelo());
+                statement.setString(6, mascota.getFecNac());
+                statement.setDouble(7, mascota.getPesoMedio());
+                statement.setDouble(8, mascota.getPesoActual());
+=======
                 statement.setDate(2, Date.valueOf(mascota.getFecNac()));
                 statement.setBoolean(3, mascota.getActivo());
+>>>>>>> e6309a9693f8d6f78a06bba54f7196746cf3aad5
                 
                 statement.executeUpdate();
                 
@@ -67,7 +76,11 @@ public class MascotaData {
                 mascota = new Mascota();
                 mascota.setId(resultSet.getInt("id"));
                 mascota.setAlias(resultSet.getString("alias"));
+<<<<<<< HEAD
+                mascota.setFecNac(resultSet.getString("FecNac"));
+=======
                 mascota.setFecNac(resultSet.getDate("FecNac").toLocalDate());
+>>>>>>> e6309a9693f8d6f78a06bba54f7196746cf3aad5
 
                 mascotas.add(mascota);
             }      
