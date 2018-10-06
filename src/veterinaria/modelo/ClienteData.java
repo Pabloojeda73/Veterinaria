@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +21,10 @@ import java.util.logging.Logger;
  * @author PabloOjeda
  */
 public class ClienteData {
+
     private Connection connection = null;
     
-    public ClienteData (Conexion conexion) {
+    public ClienteData(Conexion conexion) {
         try {
             connection = conexion.getConnection();
         } catch (SQLException ex) {
@@ -44,7 +46,7 @@ public class ClienteData {
             
             ResultSet rs = statement.getGeneratedKeys();
             
-            if(rs.next()) {
+            if (rs.next()) {
                 cliente.setId(rs.getInt("id"));
             } else {
                 System.out.println("No se pudo obtener el id luego de guardar al cliente.");
@@ -65,7 +67,7 @@ public class ClienteData {
             ResultSet rs = statement.executeQuery();
             
             Cliente cliente;
-            while(rs.next()) {
+            while (rs.next()) {
                 cliente = new Cliente();
                 cliente.setId(rs.getInt("id"));
                 cliente.setDni(rs.getString("dni"));
@@ -94,7 +96,7 @@ public class ClienteData {
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             
-            while(rs.next()) {
+            while (rs.next()) {
                 cliente = new Cliente();
                 cliente.setId(rs.getInt("id"));
                 cliente.setApellidoNombre(rs.getString("apellidoNombre"));
@@ -117,11 +119,11 @@ public class ClienteData {
         
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-
+            
             ResultSet rs = statement.executeQuery();
             
             Mascota mascota;
-            while(rs.next()) {
+            while (rs.next()) {
                 mascota = new Mascota();
                 mascota.setAlias(rs.getString("alias"));
                 mascota.setColorPelo(rs.getString("colorDePelo"));
@@ -139,7 +141,6 @@ public class ClienteData {
             
             statement.close();
             
-            
         } catch (SQLException ex) {
             Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -147,34 +148,28 @@ public class ClienteData {
         return mascotas;
     }
     
+    public void borrarCliente(int id) {
+        String sql = "DELETE FROM Clientes WHERE id = ? ;";
+        
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, id);
+            
+            statement.executeUpdate();
+            statement.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al borrar un cliente." + ex.getMessage());
+        }
+    }
+
     //main para probar la clase, BORRAR
     public static void main(String[] args) {
         try {
             Conexion conexion = new Conexion("jdbc:mysql://localhost/veterinaria", "root", "");
             ClienteData clienteData = new ClienteData(conexion);
-            
-            //Probar guardarCliente
-            //clienteData.guardarCliente(cliente);
-            //System.out.println("El id del nuevo cliente es: " + cliente.getId());
-            
-            //Probar obtenerClientes
-            //List<Cliente> clientes = clienteData.obtenerClientes();
-            //System.out.println(clientes);
-            
-            //Probar obtenerCliente
-            //Cliente clienteObtenido = clienteData.obtenerCliente(3);
-            //System.out.println(clienteObtenido);
-            
-            //Probar obtenerMascotas(cliente)
-            /*Cliente cliente = clienteData.obtenerCliente(1);
-            List<Mascota> mascotas = clienteData.obtenerMascotas(cliente);
-            
-            for (Mascota m: mascotas) {
-                if(m.getDuenio().getId() == cliente.getId()) {
-                    System.out.println(m.getAlias());
-                }
-            }*/
-            
+
+            clienteData.borrarCliente(5);
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
