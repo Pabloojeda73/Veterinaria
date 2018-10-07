@@ -51,6 +51,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenuBar2.add(jMenu4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(320, 350));
+        setResizable(false);
 
         escritorio.setName(""); // NOI18N
 
@@ -58,11 +60,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 320, Short.MAX_VALUE)
+            .addGap(0, 350, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 329, Short.MAX_VALUE)
         );
 
         Archivo.setText("Archivo");
@@ -110,7 +112,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         BarraMenu.add(Mascotas);
 
-        Tratamiento.setText("Tratamientos");
+        Tratamiento.setText("Tipos de tratamientos");
         BarraMenu.add(Tratamiento);
 
         setJMenuBar(BarraMenu);
