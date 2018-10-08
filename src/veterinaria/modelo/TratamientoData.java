@@ -85,22 +85,6 @@ public class TratamientoData {
     }
     
     
-    //main para probar y borrar
-    public static void main(String[] args) throws ClassNotFoundException {
-        Conexion conexion = new Conexion("jdbc:mysql://localhost/veterinaria", "root", "");
-        TratamientoData tratamientoData = new TratamientoData(conexion);
-        
-        /*Tratamiento tratamiento = new Tratamiento();
-        tratamiento.setActivo(true);
-        tratamiento.setDescripcion("Para la castración constatar que la mascota tenga más de 1 año.");
-        tratamiento.setImporte(375.2);
-        tratamiento.setTipo("Castracion");
-        
-        tratamientoData.guardarTratamiento(tratamiento);
-        System.out.println("El id del nuevo tratamiento es: " + tratamiento.getId());*/
-        
-        System.out.println(tratamientoData.obtenerTratamientos());
-    }
     
     
 }

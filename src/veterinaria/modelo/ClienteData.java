@@ -184,20 +184,4 @@ public class ClienteData {
         }
     }
 
-    //main para probar la clase, BORRAR
-    public static void main(String[] args) {
-        try {
-            Conexion conexion = new Conexion("jdbc:mysql://localhost/veterinaria", "root", "");
-            ClienteData clienteData = new ClienteData(conexion);
-
-            //Cliente cliente = clienteData.obtenerCliente(5);
-            //cliente.setDireccion("Lavalle 2222");
-            //cliente.setTelefono("26647898");
-            //cliente.setDni("29767584");
-            //clienteData.actualizarCliente(cliente);
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }
