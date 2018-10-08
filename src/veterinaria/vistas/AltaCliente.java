@@ -60,7 +60,6 @@ public class AltaCliente extends javax.swing.JInternalFrame {
         tfUnContacto = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
 
         setClosable(true);
         setMaximumSize(new java.awt.Dimension(320, 350));
@@ -106,14 +105,16 @@ public class AltaCliente extends javax.swing.JInternalFrame {
         getContentPane().add(tfUnContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 210, -1));
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 100, -1));
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setMaximumSize(new java.awt.Dimension(400, 400));
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, -1));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veterinaria/vistas/Imagenes/Fondos/VeterinariaVistaPrincipal.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -121,18 +122,28 @@ public class AltaCliente extends javax.swing.JInternalFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String dni = tfDni.getText();
         for (Cliente c:clientes) {
-            System.out.println(c.getDni());
-            System.out.println(dni);
-            System.out.println(c.getDni().equals(dni));
             if(c.getDni().equals(dni)) {
-                System.out.println("El cliente ya existe en la base de datos.");
                 tfApellidoNombre.setText(c.getApellidoNombre());
                 tfDireccion.setText(c.getDireccion());
                 tfTelefono.setText(c.getTelefono());
                 tfUnContacto.setText(c.getUnContacto());
+                btnGuardar.setEnabled(false);
             }
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        
+        Cliente cliente = new Cliente();
+        cliente.setApellidoNombre(tfApellidoNombre.getText());
+        cliente.setDireccion(tfDireccion.getText());
+        cliente.setDni(tfDni.getText());
+        cliente.setTelefono(tfTelefono.getText());
+        cliente.setUnContacto(tfUnContacto.getText());
+        
+        clienteData.guardarCliente(cliente);
+        this.dispose();
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -144,7 +155,6 @@ public class AltaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel label;
     private javax.swing.JTextField tfApellidoNombre;
     private javax.swing.JTextField tfDireccion;
