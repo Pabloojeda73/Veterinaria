@@ -30,7 +30,7 @@ public class Veterinaria {
         cliente.setUnContacto("Rodriguez, Ernesto");
                 
         clienteData.guardarCliente(cliente);
-        System.out.println(cliente.getId());
+        System.out.println("El id del cliente es: " + cliente.getId());
     }
     
 }
