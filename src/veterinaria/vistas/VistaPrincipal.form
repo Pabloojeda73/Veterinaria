@@ -52,14 +52,14 @@
             <Property name="text" type="java.lang.String" value="Cliente"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="AltaDeCliente">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alta de Cliente"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AltaDeClienteActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
               </Events>
-            </Menu>
+            </MenuItem>
             <Menu class="javax.swing.JMenu" name="BajaDeCliente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Baja de Cliente"/>

@@ -5,17 +5,36 @@
  */
 package veterinaria.vistas;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import veterinaria.modelo.Cliente;
+import veterinaria.modelo.ClienteData;
+import veterinaria.modelo.Conexion;
+
 /**
  *
  * @author PabloOjeda
  */
 public class AltaCliente extends javax.swing.JInternalFrame {
+    private ClienteData clienteData;
+    private Conexion conexion;
+    private ArrayList<Cliente> clientes;
 
     /**
      * Creates new form AltaCliente
      */
     public AltaCliente() {
         initComponents();
+        
+        try {
+            conexion = new Conexion("jdbc:mysql://localhost/veterinaria", "root", "");
+            clienteData = new ClienteData(conexion);
+            clientes = (ArrayList)clienteData.obtenerClientes();
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AltaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -28,30 +47,112 @@ public class AltaCliente extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        tfDni = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        tfApellidoNombre = new javax.swing.JTextField();
+        label = new javax.swing.JLabel();
+        tfDireccion = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        tfTelefono = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        tfUnContacto = new javax.swing.JTextField();
+        btnGuardar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
-        setMaximizable(true);
-        setResizable(true);
+        setClosable(true);
         setMaximumSize(new java.awt.Dimension(320, 350));
         setVisible(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Alta de cliente");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
+        getContentPane().add(tfDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 120, -1));
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("DNI");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 110, 20));
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Nombre y Apellido");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+        getContentPane().add(tfApellidoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 150, -1));
+
+        label.setForeground(new java.awt.Color(0, 0, 0));
+        label.setText("Direccion");
+        getContentPane().add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        getContentPane().add(tfDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 210, -1));
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Telefono");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        getContentPane().add(tfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 210, -1));
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Contacto");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        getContentPane().add(tfUnContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 210, -1));
+
+        btnGuardar.setText("Guardar");
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 100, -1));
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veterinaria/vistas/Imagenes/Fondos/VeterinariaVistaPrincipal.png"))); // NOI18N
         fondo.setMaximumSize(new java.awt.Dimension(400, 400));
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veterinaria/vistas/Imagenes/Fondos/VeterinariaVistaPrincipal.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String dni = tfDni.getText();
+        for (Cliente c:clientes) {
+            System.out.println(c.getDni());
+            System.out.println(dni);
+            System.out.println(c.getDni().equals(dni));
+            if(c.getDni().equals(dni)) {
+                System.out.println("El cliente ya existe en la base de datos.");
+                tfApellidoNombre.setText(c.getApellidoNombre());
+                tfDireccion.setText(c.getDireccion());
+                tfTelefono.setText(c.getTelefono());
+                tfUnContacto.setText(c.getUnContacto());
+            }
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel label;
+    private javax.swing.JTextField tfApellidoNombre;
+    private javax.swing.JTextField tfDireccion;
+    private javax.swing.JTextField tfDni;
+    private javax.swing.JTextField tfTelefono;
+    private javax.swing.JTextField tfUnContacto;
     // End of variables declaration//GEN-END:variables
+
+    
+    
 }

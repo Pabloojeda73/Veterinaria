@@ -37,7 +37,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         Cerrar = new javax.swing.JMenu();
         Edicion = new javax.swing.JMenu();
         Cliente = new javax.swing.JMenu();
-        AltaDeCliente = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         BajaDeCliente = new javax.swing.JMenu();
         Mascotas = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -89,13 +89,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         Cliente.setText("Cliente");
 
-        AltaDeCliente.setText("Alta de Cliente");
-        AltaDeCliente.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setText("Alta de Cliente");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AltaDeClienteActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        Cliente.add(AltaDeCliente);
+        Cliente.add(jMenuItem1);
 
         BajaDeCliente.setText("Baja de Cliente");
         Cliente.add(BajaDeCliente);
@@ -136,20 +136,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
         System.exit(0);        
     }//GEN-LAST:event_CerrarActionPerformed
 
-    private void AltaDeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AltaDeClienteActionPerformed
-        // TODO add your handling code here:
-        escritorio.removeAll();
-        escritorio.repaint();
-        AltaCliente ac=new AltaCliente();
-        ac.setVisible(true);
-        escritorio.add(ac);
-        escritorio.moveToFront(ac);
-    }//GEN-LAST:event_AltaDeClienteActionPerformed
-
     private void ArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArchivoActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_ArchivoActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        AltaCliente ac = new AltaCliente();
+        ac.setVisible(true);
+        escritorio.add(ac);
+        escritorio.moveToFront(ac);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,7 +186,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu AltaDeCliente;
     private javax.swing.JMenu Archivo;
     private javax.swing.JMenu BajaDeCliente;
     private javax.swing.JMenuBar BarraMenu;
@@ -203,5 +201,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }
