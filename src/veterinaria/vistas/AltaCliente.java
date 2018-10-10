@@ -62,7 +62,9 @@ public class AltaCliente extends javax.swing.JInternalFrame {
         fondo = new javax.swing.JLabel();
 
         setClosable(true);
-        setMaximumSize(new java.awt.Dimension(320, 350));
+        setForeground(java.awt.Color.white);
+        setMaximumSize(new java.awt.Dimension(640, 480));
+        setPreferredSize(new java.awt.Dimension(310, 300));
         setVisible(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
