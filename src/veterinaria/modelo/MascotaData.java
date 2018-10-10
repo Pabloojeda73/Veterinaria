@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,9 +24,15 @@ import java.util.List;
 public class MascotaData {
     
     private Connection connection = null;
+    private ClienteData clienteData;
 
     public MascotaData(Conexion conexion) {
-        connection = conexion.getConexion();
+        try {
+            connection = conexion.getConnection();
+            clienteData = new ClienteData(conexion);
+        } catch (SQLException ex) {
+            Logger.getLogger(MascotaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
@@ -59,20 +67,26 @@ public class MascotaData {
         }
     }
     
-    public List<Mascota> obtenerMascota(){
+    public List<Mascota> obtenerMascotas(){
         List<Mascota> mascotas = new ArrayList<>();
             
 
         try {
-            String sql = "SELECT * FROM mascotas;";
+            String sql = "SELECT * FROM Mascotas;";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             Mascota mascota;
             while(resultSet.next()){
                 mascota = new Mascota();
                 mascota.setId(resultSet.getInt("id"));
+                mascota.setDuenio(clienteData.obtenerCliente(resultSet.getInt("id_cliente")));
                 mascota.setAlias(resultSet.getString("alias"));
+                mascota.setSexo(resultSet.getString("sexo"));
+                mascota.setEspecie(resultSet.getString("especie"));
+                mascota.setRaza(resultSet.getString("raza"));
+                mascota.setColorDePelo(resultSet.getString("colorDePelo"));
                 mascota.setFecNac(resultSet.getDate("FecNac").toLocalDate());
+                mascota.setPesoMedio(resultSet.getDouble("pesoMedio"));
 
                 mascotas.add(mascota);
             }      
@@ -85,4 +99,31 @@ public class MascotaData {
         
         return mascotas;
   }
+    
+    public static void main(String[] args) {
+        try {
+            Conexion conexion = new Conexion("jdbc:mysql://localhost/veterinaria", "root", "");
+            
+            Mascota mascota = new Mascota();
+            mascota.setAlias("simona");
+            mascota.setSexo("Hembra");
+            mascota.setEspecie("Perro");
+            mascota.setRaza("Cañon");
+            mascota.setColorDePelo("Negro");
+            mascota.setFecNac(LocalDate.of(2014, 3, 15));
+            mascota.setPesoMedio(35.8);
+            mascota.setPesoActual(38.7);
+
+            MascotaData mascotaData = new MascotaData(conexion);
+            
+            ArrayList<Mascota> mascotas = (ArrayList)mascotaData.obtenerMascotas();
+            
+            System.out.println("Mascotas " + mascotas);
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MascotaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
 }

@@ -40,7 +40,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
             clientes = (ArrayList)clienteData.obtenerClientes();
             
             mascotaData = new MascotaData(conexion);
-            mascotas = (ArrayList)mascotaData.obtenerMascota();
+            mascotas = (ArrayList)mascotaData.obtenerMascotas();
             
             cargaCbClientes();
             
@@ -83,6 +83,12 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         setClosable(true);
 
         jLabel1.setText("Clientes");
+
+        cbClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbClientesActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("id");
 
@@ -193,9 +199,13 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbClientesActionPerformed
+        cargaDatos();
+    }//GEN-LAST:event_cbClientesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbClientes;
+    private javax.swing.JComboBox<Cliente> cbClientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -216,7 +226,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
     public void cargaCbClientes() {
         for(Cliente c:clientes) {
-            cbClientes.addItem(c.getApellidoNombre());
+            cbClientes.addItem(c);
         }
     }
     
@@ -248,6 +258,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         Cliente cliente = (Cliente)cbClientes.getSelectedItem();
         
         for(Mascota m: mascotas) {
+            //System.out.println("Mascota " + m.getDuenio().getId());
             if(m.getDuenio().getId() == cliente.getId()) {
                 modelo.addRow(new Object[]{m.getAlias(), m.getEspecie(), m.getRaza(), m.getSexo()});
             }

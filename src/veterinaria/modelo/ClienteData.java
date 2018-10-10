@@ -112,6 +112,7 @@ public class ClienteData {
         return cliente;
     }
     
+    //DUPLICADA EN MascotaData REVISAR CUAL VA A QUEDAR
     public List<Mascota> obtenerMascotas(Cliente cliente) {
         List<Mascota> mascotas = new ArrayList<>();
         
@@ -132,8 +133,7 @@ public class ClienteData {
                 mascota.setRaza(rs.getString("raza"));
                 mascota.setSexo(rs.getString("sexo"));
                 mascota.setFecNac(rs.getDate("fecNac").toLocalDate());
-                mascota.setpesoMedio(rs.getDouble("pesoMedio"));
-                mascota.setPesoMedio(rs.getDouble("pesoActual"));
+                mascota.setPesoMedio(rs.getDouble("pesoMedio"));
                 
                 mascotas.add(mascota);
                 
