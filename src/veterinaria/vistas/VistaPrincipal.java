@@ -38,7 +38,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         Edicion = new javax.swing.JMenu();
         Cliente = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        BajaDeCliente = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         Mascotas = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -51,7 +51,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenuBar2.add(jMenu4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(320, 350));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
         escritorio.setName(""); // NOI18N
@@ -97,8 +97,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         Cliente.add(jMenuItem1);
 
-        BajaDeCliente.setText("Baja de Cliente");
-        Cliente.add(BajaDeCliente);
+        jMenuItem2.setText("Editar Cliente");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        Cliente.add(jMenuItem2);
 
         BarraMenu.add(Cliente);
 
@@ -150,6 +155,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(ac);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaCliente vc = new VistaCliente();
+        vc.setVisible(true);
+        escritorio.add(vc);
+        escritorio.moveToFront(vc);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -187,7 +201,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Archivo;
-    private javax.swing.JMenu BajaDeCliente;
     private javax.swing.JMenuBar BarraMenu;
     private javax.swing.JMenu Cerrar;
     private javax.swing.JMenu Cliente;
@@ -202,5 +215,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }
