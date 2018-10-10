@@ -36,7 +36,7 @@ public class MascotaData {
     }
     
     
-    public void guardarMAscota(Mascota mascota){
+    public void guardarMascota(Mascota mascota){
         try {
             
             String sql = "INSERT INTO alumno (alias, sexo, especie, raza, colorDePelo, fecNac, pesoMedio, pesoActual) VALUES ( ? , ? , ?, ?, ?, ?, ?, ?);";

@@ -32,5 +32,4 @@ public class Veterinaria {
         clienteData.guardarCliente(cliente);
         System.out.println("El id del cliente es: " + cliente.getId());
     }
-    
 }
