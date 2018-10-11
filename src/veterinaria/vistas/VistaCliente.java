@@ -79,6 +79,8 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtMascotas = new javax.swing.JTable();
+        btnEliminarCliente = new javax.swing.JButton();
+        btnActualizarCliente = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -115,13 +117,30 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jtMascotas);
 
+        btnEliminarCliente.setBackground(new java.awt.Color(255, 51, 51));
+        btnEliminarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarCliente.setText("Eliminar Cliente");
+        btnEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarClienteActionPerformed(evt);
+            }
+        });
+
+        btnActualizarCliente.setBackground(new java.awt.Color(102, 204, 0));
+        btnActualizarCliente.setText("Actualizar Cliente");
+        btnActualizarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(104, 104, 104)
@@ -132,12 +151,12 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel7)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
-                            .addComponent(jSeparator1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel5)
@@ -161,7 +180,11 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel6)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(tfContacto))))
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING))))
+                            .addComponent(jSeparator2)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnActualizarCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEliminarCliente)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -193,7 +216,11 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEliminarCliente)
+                    .addComponent(btnActualizarCliente))
+                .addContainerGap())
         );
 
         pack();
@@ -203,8 +230,28 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         cargaDatos();
     }//GEN-LAST:event_cbClientesActionPerformed
 
+    private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
+        Cliente cliente = (Cliente)cbClientes.getSelectedItem();
+        clienteData.borrarCliente(cliente.getId());
+        
+        cbClientes.removeItemAt(cbClientes.getSelectedIndex());
+        
+    }//GEN-LAST:event_btnEliminarClienteActionPerformed
+
+    private void btnActualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarClienteActionPerformed
+        Cliente cliente = (Cliente)cbClientes.getSelectedItem();
+        cliente.setUnContacto(tfContacto.getText());
+        cliente.setDireccion(tfDireccion.getText());
+        cliente.setDni(tfDni.getText());
+        cliente.setTelefono(tfTelefono.getText());
+        
+        clienteData.actualizarCliente(cliente);
+    }//GEN-LAST:event_btnActualizarClienteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizarCliente;
+    private javax.swing.JButton btnEliminarCliente;
     private javax.swing.JComboBox<Cliente> cbClientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -225,6 +272,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public void cargaCbClientes() {
+        
         for(Cliente c:clientes) {
             cbClientes.addItem(c);
         }
@@ -245,10 +293,10 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     
     public void borrarFilas() {
         int cantFilas = modelo.getRowCount() - 1;
-        System.out.println("Filas " + cantFilas);
+        //System.out.println("Filas " + cantFilas);
         for (int i = cantFilas; i >= 0; i--) {
             modelo.removeRow(i);
-            System.out.println("Tabla " + i);
+            //System.out.println("Tabla " + i);
         }
     }
     
@@ -256,6 +304,13 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         borrarFilas();
         
         Cliente cliente = (Cliente)cbClientes.getSelectedItem();
+        
+        tfContacto.setText(cliente.getUnContacto());
+        tfDireccion.setText(cliente.getDireccion());
+        tfDni.setText(cliente.getDni());
+        tfId.setText(String.valueOf(cliente.getId()));
+        tfTelefono.setText(cliente.getTelefono());
+        
         
         for(Mascota m: mascotas) {
             //System.out.println("Mascota " + m.getDuenio().getId());
