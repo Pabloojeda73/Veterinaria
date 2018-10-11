@@ -37,19 +37,19 @@ public class MascotaData {
     
     
     public void guardarMascota(Mascota mascota){
+        String sql = "INSERT INTO Mascotas (id_cliente, alias, sexo, especie, raza, colorDePelo, fecNac, pesoMedio) VALUES ( ? , ? , ?, ?, ?, ?, ?, ?);";
+        
         try {
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
-            String sql = "INSERT INTO alumno (alias, sexo, especie, raza, colorDePelo, fecNac, pesoMedio, pesoActual) VALUES ( ? , ? , ?, ?, ?, ?, ?, ?);";
-
-            try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                statement.setString(1, mascota.getAlias());
-                statement.setString(2, mascota.getSexo());
-                statement.setString(3, mascota.getEspecie());
-                statement.setString(4, mascota.getRaza());
-                statement.setString(5, mascota.getColorDePelo());
-                statement.setDate(6, Date.valueOf(mascota.getFecNac()));
-                statement.setDouble(7, mascota.getPesoMedio());
-                statement.setDouble(8, mascota.getPesoActual());
+                statement.setInt(1, mascota.getDuenio().getId());
+                statement.setString(2, mascota.getAlias());
+                statement.setString(3, mascota.getSexo());
+                statement.setString(4, mascota.getEspecie());
+                statement.setString(5, mascota.getRaza());
+                statement.setString(6, mascota.getColorDePelo());
+                statement.setDate(7, Date.valueOf(mascota.getFecNac()));
+                statement.setDouble(8, mascota.getPesoMedio());
                 
                 statement.executeUpdate();
                 
@@ -60,11 +60,11 @@ public class MascotaData {
                 } else {
                     System.out.println("No se pudo obtener el id luego de insertar una mascota.");
                 }
-            }
-    
+                statement.close();
         } catch (SQLException ex) {
-            System.out.println("Error al insertar una mascota: " + ex.getMessage());
+            Logger.getLogger(MascotaData.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
     public List<Mascota> obtenerMascotas(){
@@ -94,7 +94,7 @@ public class MascotaData {
         } catch (SQLException ex) {
             System.out.println("Error al obtener las mascotas: " + ex.getMessage());
         }
-        List<Mascota> mascota;
+        //List<Mascota> mascota;
         
         
         return mascotas;

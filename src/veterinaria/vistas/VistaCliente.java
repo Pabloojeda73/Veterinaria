@@ -5,6 +5,7 @@
  */
 package veterinaria.vistas;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -81,6 +82,9 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         jtMascotas = new javax.swing.JTable();
         btnEliminarCliente = new javax.swing.JButton();
         btnActualizarCliente = new javax.swing.JButton();
+        btnAddRow = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -134,27 +138,31 @@ public class VistaCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        btnAddRow.setText("Agregar Fila");
+        btnAddRow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddRowActionPerformed(evt);
+            }
+        });
+
+        btnSave.setText("Salvar Mascota");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setText("Borrar Mascota");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(104, 104, 104)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel7)))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -175,7 +183,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tfDireccion))
+                                        .addComponent(tfDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -184,7 +192,23 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnActualizarCliente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnEliminarCliente)))))
+                                .addComponent(btnEliminarCliente))
+                            .addComponent(jScrollPane1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAddRow)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDelete)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -213,10 +237,14 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(btnAddRow)
+                    .addComponent(btnSave)
+                    .addComponent(btnDelete))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminarCliente)
                     .addComponent(btnActualizarCliente))
@@ -248,10 +276,46 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         clienteData.actualizarCliente(cliente);
     }//GEN-LAST:event_btnActualizarClienteActionPerformed
 
+    private void btnAddRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRowActionPerformed
+        modelo.addRow(new Object[]{"","","","","","",""});
+    }//GEN-LAST:event_btnAddRowActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        ArrayList<Mascota> mascotasCliente = new ArrayList<>();
+        Mascota mascota;
+        for(int i = 0; i <= modelo.getRowCount() - 1; i++) {
+            boolean existe = false;
+            mascota = new Mascota();
+            mascota.setDuenio((Cliente)cbClientes.getSelectedItem());
+            mascota.setAlias(modelo.getValueAt(i, 0).toString());
+            mascota.setEspecie(modelo.getValueAt(i, 1).toString());
+            mascota.setRaza(modelo.getValueAt(i, 2).toString());
+            mascota.setSexo(modelo.getValueAt(i, 3).toString());
+            mascota.setColorDePelo(modelo.getValueAt(i, 4).toString());
+            mascota.setFecNac(LocalDate.parse(modelo.getValueAt(i, 5).toString()));
+            mascota.setPesoMedio(Double.parseDouble(modelo.getValueAt(i, 6).toString()));
+            //System.out.println("Mascota " + mascota);
+            for(Mascota item:mascotas) {
+                if("" + item.getAlias() + item.getRaza() == "" + mascota.getAlias() + mascota.getRaza()) {
+                    existe = true;
+                }
+                if (!existe) {
+                    mascotasCliente.add(mascota);
+                }
+            }
+        }
+        for(Mascota m:mascotasCliente) {
+            mascotaData.guardarMascota(m);
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarCliente;
+    private javax.swing.JButton btnAddRow;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEliminarCliente;
+    private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<Cliente> cbClientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -284,6 +348,9 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         columnas.add("Especie");
         columnas.add("Raza");
         columnas.add("Sexo");
+        columnas.add("Color de Pelo");
+        columnas.add("Fecha de Nacimiento");
+        columnas.add("Peso Medio");
         
         for(Object item:columnas) {
             modelo.addColumn(item);
@@ -315,7 +382,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         for(Mascota m: mascotas) {
             //System.out.println("Mascota " + m.getDuenio().getId());
             if(m.getDuenio().getId() == cliente.getId()) {
-                modelo.addRow(new Object[]{m.getAlias(), m.getEspecie(), m.getRaza(), m.getSexo()});
+                modelo.addRow(new Object[]{m.getAlias(), m.getEspecie(), m.getRaza(), m.getSexo(), m.getColorDePelo(), m.getFecNac(), m.getPesoMedio()});
             }
         }
     }
