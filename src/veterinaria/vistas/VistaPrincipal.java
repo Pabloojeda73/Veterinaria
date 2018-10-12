@@ -110,6 +110,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         Mascotas.setText("Mascotas");
 
         btnAltaMascota.setText("Alta de mascota");
+        btnAltaMascota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAltaMascotaActionPerformed(evt);
+            }
+        });
         Mascotas.add(btnAltaMascota);
 
         btnBajaMascota.setText("Baja de mascota");
@@ -163,6 +168,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         escritorio.add(vc);
         escritorio.moveToFront(vc);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void btnAltaMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaMascotaActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaNuevaMascota nm = new VistaNuevaMascota();
+        nm.setVisible(true);
+        escritorio.add(nm);
+        escritorio.moveToFront(nm);
+    }//GEN-LAST:event_btnAltaMascotaActionPerformed
 
     /**
      * @param args the command line arguments
