@@ -20,18 +20,18 @@ public class Mascota {
     private String raza;
     private String colorDePelo;
     private LocalDate FecNac;
+    private double pesoMedio;
     
     //me parece que habria que sacarlas de aca porque estos 
     //datos los vamos a tener guardados en la base de datos
-    private boolean vacunado;
+    /*private boolean vacunado;
     private boolean enfermo;
     private boolean herido;
     private boolean bañadoPeinado;
-    private boolean castrado;
-    private double pesoMedio;
-    private double pesoActual;
+    private boolean castrado;*/
+    
 
-    public Mascota(int id, Cliente duenio, String alias, String sexo, String especie, String raza, String colorPelo, LocalDate fecNac, double pesoMedio, double pesoActual) {
+    public Mascota(int id, Cliente duenio, String alias, String sexo, String especie, String raza, String colorPelo, LocalDate fecNac, double pesoMedio) {
         this.id = id;
         this.duenio =duenio; //agregado(pablo)
         this.alias = alias;
@@ -41,19 +41,26 @@ public class Mascota {
         this.colorDePelo = colorPelo;
         this.FecNac = fecNac;
         this.pesoMedio = pesoMedio;
-        this.pesoActual = pesoActual;
     }
 
     public Mascota() {
-        
+        this.id = -1;
     }
-    
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Cliente getDuenio() {
+        return duenio;
+    }
+
+    public void setDuenio(Cliente duenio) {
+        this.duenio = duenio;
     }
 
     public String getAlias() {
@@ -88,11 +95,11 @@ public class Mascota {
         this.raza = raza;
     }
 
-    public String getColorPelo() {
+    public String getColorDePelo() {
         return colorDePelo;
     }
 
-    public void setColorPelo(String colorDePelo) {
+    public void setColorDePelo(String colorDePelo) {
         this.colorDePelo = colorDePelo;
     }
 
@@ -100,16 +107,8 @@ public class Mascota {
         return FecNac;
     }
 
-    public void setFecNac(LocalDate fecNac) {
-        this.FecNac = fecNac;
-    }
-
-    public double pesoMedio() {
-        return pesoMedio;
-    }
-
-    public void setpesoMedio(double pesoMedio) {
-        this.pesoMedio = pesoMedio;
+    public void setFecNac(LocalDate FecNac) {
+        this.FecNac = FecNac;
     }
 
     public double getPesoMedio() {
@@ -119,86 +118,5 @@ public class Mascota {
     public void setPesoMedio(double pesoMedio) {
         this.pesoMedio = pesoMedio;
     }
-
-    public Cliente getDuenio() {
-        return duenio;
-    }
-
-    public void setDuenio(Cliente duenio) {
-        this.duenio = duenio;
-    }
-
-    public boolean isVacunado() {
-        return vacunado;
-    }
-
-    public void setVacunado(boolean vacunado) {
-        this.vacunado = vacunado;
-    }
-
-    public boolean isEnfermo() {
-        return enfermo;
-    }
-
-    public void setEnfermo(boolean enfermo) {
-        this.enfermo = enfermo;
-    }
-
-    public boolean isHerido() {
-        return herido;
-    }
-
-    public void setHerido(boolean herido) {
-        this.herido = herido;
-    }
-
-    public boolean isBañadoPeinado() {
-        return bañadoPeinado;
-    }
-
-    public void setBañadoPeinado(boolean bañadoPeinado) {
-        this.bañadoPeinado = bañadoPeinado;
-    }
-
-    public boolean isCastrado() {
-        return castrado;
-    }
-
-    public void setCastrado(boolean castrado) {
-        this.castrado = castrado;
-    }
-
-    public double getPesoPromedio10Visitas() {
-        return pesoMedio;
-    }
-
-    public void setPesoPromedio10Visitas(double pesoMedio) {
-        this.pesoMedio = pesoMedio;
-    }
-
-    String getNombre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    boolean getActivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public double getPesoActual() {
-        return pesoActual;
-    }
-
-    public void setPesoActual(double pesoActual) {
-        this.pesoActual = pesoActual;
-    }
-
-    public String getColorDePelo() {
-        return colorDePelo;
-    }
-
-    public void setColorDePelo(String colorDePelo) {
-        this.colorDePelo = colorDePelo;
-    }
-    
     
 }
