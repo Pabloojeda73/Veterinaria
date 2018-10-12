@@ -112,42 +112,7 @@ public class ClienteData {
         return cliente;
     }
     
-    //DUPLICADA EN MascotaData REVISAR CUAL VA A QUEDAR
-    public List<Mascota> obtenerMascotas(Cliente cliente) {
-        List<Mascota> mascotas = new ArrayList<>();
         
-        String sql = "SELECT * FROM Mascotas;";
-        
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
-            
-            ResultSet rs = statement.executeQuery();
-            
-            Mascota mascota;
-            while (rs.next()) {
-                mascota = new Mascota();
-                mascota.setAlias(rs.getString("alias"));
-                mascota.setColorPelo(rs.getString("colorDePelo"));
-                mascota.setDuenio(obtenerCliente(rs.getInt("id_cliente")));
-                mascota.setEspecie(rs.getString("especie"));
-                mascota.setRaza(rs.getString("raza"));
-                mascota.setSexo(rs.getString("sexo"));
-                mascota.setFecNac(rs.getDate("fecNac").toLocalDate());
-                mascota.setPesoMedio(rs.getDouble("pesoMedio"));
-                
-                mascotas.add(mascota);
-                
-            }
-            
-            statement.close();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return mascotas;
-    }
-    
     public void borrarCliente(int id) {
         String sql = "DELETE FROM Clientes WHERE id = ? ;";
         
