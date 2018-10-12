@@ -59,7 +59,7 @@ public class ClienteData {
     }
     
     public List<Cliente> obtenerClientes() {
-        List<Cliente> clientes = new ArrayList<>();
+        ArrayList<Cliente> clientes = new ArrayList<>();
         
         String sql = "SELECT * FROM Clientes;";
         try {

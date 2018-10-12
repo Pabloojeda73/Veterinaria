@@ -5,6 +5,7 @@
  */
 package veterinaria;
 
+import java.util.ArrayList;
 import veterinaria.modelo.Cliente;
 import veterinaria.modelo.ClienteData;
 import veterinaria.modelo.Conexion;
@@ -28,8 +29,24 @@ public class Veterinaria {
         cliente.setDni("11111111");
         cliente.setTelefono("2664111111");
         cliente.setUnContacto("Rodriguez, Ernesto");
-                
         clienteData.guardarCliente(cliente);
-        System.out.println("El id del cliente es: " + cliente.getId());
+        System.out.println("El id del nuevo cliente es: " + cliente.getId());
+        
+        ArrayList<Cliente> clientes = (ArrayList)clienteData.obtenerClientes();
+        for(Cliente c:clientes) {
+            System.out.println("Cliente " + c.toString());
+        }
+        
+        cliente.setDireccion("Bolivar 2222");
+        cliente.setDni("222222");
+        clienteData.actualizarCliente(cliente);
+        Cliente clienteAcutalizado = clienteData.obtenerCliente(cliente.getId());
+        System.out.println("Cliente actualizado: Direccion " + cliente.getDireccion() + " DNI: " + cliente.getDni());
+        
+        clienteData.borrarCliente(cliente.getId());
+        clientes = (ArrayList)clienteData.obtenerClientes();
+        for(Cliente c:clientes) {
+            System.out.println(c.toString());
+        }
     }
 }
