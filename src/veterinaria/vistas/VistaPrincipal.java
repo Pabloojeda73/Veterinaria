@@ -40,8 +40,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         Mascotas = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        btnAltaMascota = new javax.swing.JMenuItem();
+        btnBajaMascota = new javax.swing.JMenuItem();
         Tratamiento = new javax.swing.JMenu();
 
         jMenu3.setText("File");
@@ -109,11 +109,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         Mascotas.setText("Mascotas");
 
-        jMenu1.setText("Alta de mascota");
-        Mascotas.add(jMenu1);
+        btnAltaMascota.setText("Alta de mascota");
+        Mascotas.add(btnAltaMascota);
 
-        jMenu2.setText("Baja de mascota");
-        Mascotas.add(jMenu2);
+        btnBajaMascota.setText("Baja de mascota");
+        Mascotas.add(btnBajaMascota);
 
         BarraMenu.add(Mascotas);
 
@@ -207,10 +207,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu Edicion;
     private javax.swing.JMenu Mascotas;
     private javax.swing.JMenu Tratamiento;
+    private javax.swing.JMenuItem btnAltaMascota;
+    private javax.swing.JMenuItem btnBajaMascota;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JColorChooser jColorChooser1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
