@@ -44,8 +44,18 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="Edicion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Edicion"/>
+            <Property name="text" type="java.lang.String" value="Visitas"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="btnNuevaVisita">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nueva Visita"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevaVisitaActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="Cliente">
           <Properties>
@@ -94,6 +104,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Tipos de tratamientos"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Formulario de Tratamientos"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>
