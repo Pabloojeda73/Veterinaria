@@ -36,6 +36,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         Archivo = new javax.swing.JMenu();
         Cerrar = new javax.swing.JMenu();
         Edicion = new javax.swing.JMenu();
+        btnNuevaVisita = new javax.swing.JMenuItem();
         Cliente = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -43,6 +44,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAltaMascota = new javax.swing.JMenuItem();
         btnBajaMascota = new javax.swing.JMenuItem();
         Tratamiento = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenu3.setText("File");
         jMenuBar2.add(jMenu3);
@@ -84,7 +86,16 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         BarraMenu.add(Archivo);
 
-        Edicion.setText("Edicion");
+        Edicion.setText("Visitas");
+
+        btnNuevaVisita.setText("Nueva Visita");
+        btnNuevaVisita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevaVisitaActionPerformed(evt);
+            }
+        });
+        Edicion.add(btnNuevaVisita);
+
         BarraMenu.add(Edicion);
 
         Cliente.setText("Cliente");
@@ -123,6 +134,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         BarraMenu.add(Mascotas);
 
         Tratamiento.setText("Tipos de tratamientos");
+
+        jMenuItem3.setText("Formulario de Tratamientos");
+        Tratamiento.add(jMenuItem3);
+
         BarraMenu.add(Tratamiento);
 
         setJMenuBar(BarraMenu);
@@ -178,6 +193,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(nm);
     }//GEN-LAST:event_btnAltaMascotaActionPerformed
 
+    private void btnNuevaVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaVisitaActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaFormularioVisitas formVisitas = new VistaFormularioVisitas();
+        formVisitas.setVisible(true);
+        escritorio.add(formVisitas);
+        escritorio.moveToFront(formVisitas);
+    }//GEN-LAST:event_btnNuevaVisitaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -223,6 +247,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu Tratamiento;
     private javax.swing.JMenuItem btnAltaMascota;
     private javax.swing.JMenuItem btnBajaMascota;
+    private javax.swing.JMenuItem btnNuevaVisita;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JMenu jMenu3;
@@ -230,5 +255,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }
