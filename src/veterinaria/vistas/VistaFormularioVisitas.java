@@ -5,6 +5,7 @@
  */
 package veterinaria.vistas;
 
+import java.awt.Frame;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -191,6 +192,11 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
         jLabel11.setText("Tratamiento");
 
         btnVisitas.setText("Visitas");
+        btnVisitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisitasActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Fecha");
 
@@ -212,6 +218,11 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -430,6 +441,15 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
         
         this.dispose();
     }//GEN-LAST:event_btnGuardarVisitaActionPerformed
+
+    private void btnVisitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisitasActionPerformed
+        //ver como hacer un formulario modal??
+        System.out.println("Deberia aparecer una ventana con un formulario para el historial");
+    }//GEN-LAST:event_btnVisitasActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
