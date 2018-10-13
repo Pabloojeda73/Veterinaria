@@ -119,4 +119,8 @@ public class Mascota {
         this.pesoMedio = pesoMedio;
     }
     
+    @Override
+    public String toString() {
+        return alias;
+    }
 }
