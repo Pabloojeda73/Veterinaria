@@ -5,6 +5,7 @@
  */
 package veterinaria.vistas;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +16,7 @@ import veterinaria.modelo.Mascota;
 import veterinaria.modelo.MascotaData;
 import veterinaria.modelo.Tratamiento;
 import veterinaria.modelo.TratamientoData;
+import veterinaria.modelo.Visita;
 import veterinaria.modelo.VisitaData;
 
 /**
@@ -48,6 +50,8 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
             
             tratamientoData = new TratamientoData(conexion);
             tratamientos = (ArrayList)tratamientoData.obtenerTratamientos();
+            
+            visitaData = new VisitaData(conexion);
             
             cargaCbClientes();
             cargaCbTratamientos();
@@ -414,7 +418,17 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rbtnHembraActionPerformed
 
     private void btnGuardarVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarVisitaActionPerformed
+        Visita visita = new Visita();
+        visita.setDetalles(taDetalles.getText());
+        visita.setFecha(LocalDate.parse(tfFechaTratamiento.getText()));
+        visita.setMascota((Mascota)cbMascotas.getSelectedItem());
+        visita.setPesoActual(Double.parseDouble(tfPesoActual.getText()));
+        visita.setTratamiento((Tratamiento)cbTratamientos.getSelectedItem());
+        visita.setVeterinario(tfVeterinario.getText());
         
+        visitaData.guardarVisita(visita);
+        
+        this.dispose();
     }//GEN-LAST:event_btnGuardarVisitaActionPerformed
 
 
