@@ -90,8 +90,9 @@ public class Cliente {
         this.mascotas = mascotas;
     }
     
+    
     @Override
     public String toString() {
-        return id + " - " + apellidoNombre;
+        return apellidoNombre;
     }
 }
