@@ -72,7 +72,7 @@ public class MascotaData {
     }
     
     public List<Mascota> obtenerMascotas(){
-        List<Mascota> mascotas = new ArrayList<>();
+        ArrayList<Mascota> mascotas = new ArrayList<>();
 
         try {
             String sql = "SELECT * FROM Mascotas;";
@@ -97,8 +97,6 @@ public class MascotaData {
         } catch (SQLException ex) {
             System.out.println("Error al obtener las mascotas: " + ex.getMessage());
         }
-        //List<Mascota> mascota;
-        
         return mascotas;
   }
     
