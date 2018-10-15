@@ -136,6 +136,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         Tratamiento.setText("Tipos de tratamientos");
 
         jMenuItem3.setText("Formulario de Tratamientos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         Tratamiento.add(jMenuItem3);
 
         BarraMenu.add(Tratamiento);
@@ -201,6 +206,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         escritorio.add(formVisitas);
         escritorio.moveToFront(formVisitas);
     }//GEN-LAST:event_btnNuevaVisitaActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaFormularioTratamientos formTrat = new VistaFormularioTratamientos();
+        formTrat.setVisible(true);
+        escritorio.add(formTrat);
+        escritorio.moveToFront(formTrat);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments

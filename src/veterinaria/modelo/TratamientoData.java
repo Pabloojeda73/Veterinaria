@@ -111,5 +111,53 @@ public class TratamientoData {
         return tratamiento;
     }
     
+    public void actualizarTratamiento(Tratamiento tratamiento) {
+        String sql = "UPDATE Tratamientos "
+                + "SET tipo = ? , descripcion = ? , importe = ? , activo = ? "
+                + "WHERE id = ? ;";
+        
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, tratamiento.getTipo());
+            statement.setString(2, tratamiento.getDescripcion());
+            statement.setDouble(3, tratamiento.getImporte());
+            statement.setBoolean(4, tratamiento.isActivo());
+            statement.setInt(5, tratamiento.getId());
+            
+            statement.executeUpdate();
+            statement.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(TratamientoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void borrarTratamiento(int id) {
+        String sql = "DELETE FROM Tratamientos WHERE id = ? ;";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+            statement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(TratamientoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public static void main(String[] args) {
+        try {
+            Conexion conexion = new Conexion("jdbc:mysql://localhost/veterinaria", "root", "");
+            TratamientoData traData = new TratamientoData(conexion);
+            
+/*            Tratamiento tratamiento = traData.obtenerTratamiento(1);
+            tratamiento.setDescripcion("Vacunacion de la mascota");
+            traData.actualizarTratamiento(tratamiento); */
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TratamientoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
 }
