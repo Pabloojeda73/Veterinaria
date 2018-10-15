@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -99,5 +98,38 @@ public class MascotaData {
         }
         return mascotas;
   }
+    
+    public Mascota obtenerMascota(int id) {
+        Mascota mascota = null;
+        
+        String sql = "SELECT * FROM Mascotas WHERE id = ? ;";
+        
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+            
+            while(rs.next()) {
+                mascota = new Mascota();
+                mascota.setAlias(rs.getString("alias"));
+                mascota.setColorDePelo(rs.getString("colorDePelo"));
+                mascota.setDuenio(clienteData.obtenerCliente(rs.getInt("id_cliente")));
+                mascota.setEspecie(rs.getString("especie"));
+                mascota.setFecNac(rs.getDate("fecNac").toLocalDate());
+                mascota.setId(rs.getInt("id"));
+                mascota.setPesoMedio(rs.getDouble("pesoMedio"));
+                mascota.setRaza(rs.getString("raza"));
+                mascota.setSexo(rs.getString("sexo"));
+                
+            }
+            
+            statement.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MascotaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return mascota;
+    }
     
 }

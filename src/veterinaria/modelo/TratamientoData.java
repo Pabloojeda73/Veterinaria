@@ -84,7 +84,32 @@ public class TratamientoData {
         return tratamientos;
     }
     
-    
+    public Tratamiento obtenerTratamiento(int id) {
+        Tratamiento tratamiento = null;
+        
+        String sql = "SELECT * FROM Tratamientos WHERE id = ? ;";
+        
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+            
+            while (rs.next()) {
+                tratamiento = new Tratamiento();
+                tratamiento.setActivo(rs.getBoolean("activo"));
+                tratamiento.setDescripcion(rs.getString("descripcion"));
+                tratamiento.setId(rs.getInt("id"));
+                tratamiento.setImporte(rs.getDouble("importe"));
+                tratamiento.setTipo(rs.getString("tipo"));
+            }
+            statement.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(TratamientoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return tratamiento;
+    }
     
     
 }

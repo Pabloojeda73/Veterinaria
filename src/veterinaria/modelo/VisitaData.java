@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,10 +21,15 @@ import java.util.logging.Logger;
  */
 public class VisitaData {
     private Connection connection = null;
+    private MascotaData mascotaData;
+    private TratamientoData tratamientoData;
 
     public VisitaData(Conexion conexion) {
         try {
             connection = conexion.getConnection();
+            mascotaData = new MascotaData(conexion);
+            tratamientoData = new TratamientoData(conexion);
+            
         } catch (SQLException ex) {
             Logger.getLogger(VisitaData.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -59,6 +65,32 @@ public class VisitaData {
             Logger.getLogger(VisitaData.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
+    
+    public ArrayList<Visita> obtenerVisitas() {
+        ArrayList<Visita> visitas = new ArrayList<>();
+        String sql = "SELECT * FROM Visitas;";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            Visita visita;
+            while(rs.next()) {
+                visita = new Visita();
+                visita.setDetalles(rs.getString("detalles"));
+                visita.setFecha(rs.getDate("fecha").toLocalDate());
+                visita.setId(rs.getInt("id"));
+                visita.setMascota(mascotaData.obtenerMascota(rs.getInt("id_mascota")));
+                visita.setPesoActual(rs.getDouble("pesoActual"));
+                visita.setTratamiento(tratamientoData.obtenerTratamiento(rs.getInt("id_tratamiento")));
+                visita.setVeterinario(rs.getString("veterinario"));
+                
+                visitas.add(visita);
+            }
+            statement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(VisitaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return visitas;
     }
     
 }

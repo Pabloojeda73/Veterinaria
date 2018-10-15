@@ -248,7 +248,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnAltaMascota;
     private javax.swing.JMenuItem btnBajaMascota;
     private javax.swing.JMenuItem btnNuevaVisita;
-    private javax.swing.JDesktopPane escritorio;
+    public static javax.swing.JDesktopPane escritorio;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;

@@ -106,6 +106,7 @@ public class ClienteData {
                 cliente.setUnContacto(rs.getString("unContacto"));
                 
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
         }

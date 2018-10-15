@@ -34,6 +34,7 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
     private ArrayList<Cliente> clientes;
     private ArrayList<Mascota> mascotas;
     private ArrayList<Tratamiento> tratamientos;
+    private Mascota mascota;
     /**
      * Creates new form VistaFormularioTratamientos
      */
@@ -96,10 +97,8 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cbClientes = new javax.swing.JComboBox<>();
-        btnAgregarCliente = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cbMascotas = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -147,8 +146,6 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAgregarCliente.setText("+");
-
         jLabel3.setText("Mascotas");
 
         cbMascotas.addActionListener(new java.awt.event.ActionListener() {
@@ -156,8 +153,6 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
                 cbMascotasActionPerformed(evt);
             }
         });
-
-        jButton1.setText("+");
 
         jLabel4.setText("Detalles de la Mascota");
 
@@ -240,10 +235,7 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbClientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbMascotas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAgregarCliente)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGap(50, 50, 50))
                     .addComponent(jSeparator1)
                     .addComponent(jSeparator2)
                     .addGroup(layout.createSequentialGroup()
@@ -316,13 +308,11 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(cbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarCliente))
+                    .addComponent(cbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cbMascotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(cbMascotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -365,7 +355,7 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarVisita)
                     .addComponent(btnCancelar))
@@ -444,7 +434,16 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
 
     private void btnVisitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisitasActionPerformed
         //ver como hacer un formulario modal??
-        System.out.println("Deberia aparecer una ventana con un formulario para el historial");
+        //System.out.println("Deberia aparecer una ventana con un formulario para el historial");
+        Mascota mascota = (Mascota)cbMascotas.getSelectedItem();
+
+        VistaHistorialVisitas vistaHistorial = new VistaHistorialVisitas(mascota);
+        
+        VistaPrincipal.escritorio.add(vistaHistorial);
+        
+        
+        vistaHistorial.toFront();
+        vistaHistorial.setVisible(true);
     }//GEN-LAST:event_btnVisitasActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -453,14 +452,12 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardarVisita;
     private javax.swing.JButton btnVisitas;
     private javax.swing.JComboBox<Cliente> cbClientes;
     private javax.swing.JComboBox<Mascota> cbMascotas;
     private javax.swing.JComboBox<Tratamiento> cbTratamientos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
