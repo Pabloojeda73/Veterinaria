@@ -5,6 +5,9 @@
  */
 package veterinaria.vistas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author PabloOjeda
@@ -34,7 +37,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         BarraMenu = new javax.swing.JMenuBar();
         Archivo = new javax.swing.JMenu();
-        Cerrar = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         Edicion = new javax.swing.JMenu();
         btnNuevaVisita = new javax.swing.JMenuItem();
         Cliente = new javax.swing.JMenu();
@@ -53,6 +56,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenuBar2.add(jMenu4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
@@ -66,9 +70,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 329, Short.MAX_VALUE)
+            .addGap(0, 327, Short.MAX_VALUE)
         );
 
+        Archivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veterinaria/vistas/Imagenes/Iconos/huella-de-pata-de-animal.png"))); // NOI18N
         Archivo.setText("Archivo");
         Archivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,13 +81,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        Cerrar.setText("Cerrar");
-        Cerrar.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem4.setText("Salir");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CerrarActionPerformed(evt);
+                jMenuItem4ActionPerformed(evt);
             }
         });
-        Archivo.add(Cerrar);
+        Archivo.add(jMenuItem4);
 
         BarraMenu.add(Archivo);
 
@@ -128,7 +133,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         Mascotas.add(btnAltaMascota);
 
-        btnBajaMascota.setText("Baja de mascota");
+        btnBajaMascota.setText("Editar mascota");
+        btnBajaMascota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBajaMascotaActionPerformed(evt);
+            }
+        });
         Mascotas.add(btnBajaMascota);
 
         BarraMenu.add(Mascotas);
@@ -160,11 +170,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);        
-    }//GEN-LAST:event_CerrarActionPerformed
 
     private void ArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArchivoActionPerformed
         // TODO add your handling code here:
@@ -216,6 +221,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(formTrat);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void btnBajaMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaMascotaActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaMascota vm = new VistaMascota();
+        vm.setVisible(true);
+        escritorio.add(vm);
+        escritorio.moveToFront(vm);
+    }//GEN-LAST:event_btnBajaMascotaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -254,7 +272,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Archivo;
     private javax.swing.JMenuBar BarraMenu;
-    private javax.swing.JMenu Cerrar;
     private javax.swing.JMenu Cliente;
     private javax.swing.JMenu Edicion;
     private javax.swing.JMenu Mascotas;
@@ -270,5 +287,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("veterinaria/vistas/Imagenes/Iconos/huella-de-pata-de-animal.png"));
+        
+        return retValue;
+    }
+    
 }

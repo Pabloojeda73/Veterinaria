@@ -132,4 +132,32 @@ public class MascotaData {
         return mascota;
     }
     
+    public void actualizarMascota(Mascota mascota) {
+        String sql = "UPDATE Mascotas "
+                + "SET alias = ? , sexo = ? , especie = ? , raza = ? , "
+                + "colorDePelo = ? , fecNac = ? , pesoMedio = ?"
+                + "WHERE id = ? ;";
+        
+        System.out.println(mascota.getAlias());
+        
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, mascota.getAlias());
+            statement.setString(2, mascota.getSexo());
+            statement.setString(3, mascota.getEspecie());
+            statement.setString(4, mascota.getRaza());
+            statement.setString(5, mascota.getColorDePelo());
+            statement.setDate(6, Date.valueOf(mascota.getFecNac()));
+            statement.setDouble(7, mascota.getPesoMedio());
+            statement.setInt(8, mascota.getId());
+            
+            statement.executeUpdate();
+            
+            statement.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MascotaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }
