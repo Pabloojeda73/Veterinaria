@@ -7,7 +7,10 @@ package veterinaria.vistas;
 
 import java.awt.Frame;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import veterinaria.modelo.Cliente;
@@ -121,8 +124,6 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         cbTratamientos = new javax.swing.JComboBox<>();
         btnVisitas = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        tfFechaTratamiento = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         tfVeterinario = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -194,8 +195,6 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
                 btnVisitasActionPerformed(evt);
             }
         });
-
-        jLabel12.setText("Fecha");
 
         jLabel13.setText("Veterinario");
 
@@ -291,12 +290,8 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbTratamientos, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfFechaTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tfVeterinario)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel14)
@@ -353,17 +348,15 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
                     .addComponent(cbTratamientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(tfFechaTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
                     .addComponent(tfVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
                     .addComponent(tfPesoActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarVisita)
                     .addComponent(btnCancelar))
@@ -429,7 +422,8 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
     private void btnGuardarVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarVisitaActionPerformed
         Visita visita = new Visita();
         visita.setDetalles(taDetalles.getText());
-        visita.setFecha(LocalDate.parse(tfFechaTratamiento.getText()));
+        LocalDateTime localDateTime = LocalDateTime.now();
+        visita.setFecha(localDateTime.toLocalDate());
         visita.setMascota((Mascota)cbMascotas.getSelectedItem());
         visita.setPesoActual(Double.parseDouble(tfPesoActual.getText()));
         visita.setTratamiento((Tratamiento)cbTratamientos.getSelectedItem());
@@ -469,7 +463,6 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -491,7 +484,6 @@ public class VistaFormularioVisitas extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfColorDePelo;
     private javax.swing.JTextField tfEspecie;
     private javax.swing.JTextField tfFecNac;
-    private javax.swing.JTextField tfFechaTratamiento;
     private javax.swing.JTextField tfPesoActual;
     private javax.swing.JTextField tfPesoMedio;
     private javax.swing.JTextField tfRaza;
