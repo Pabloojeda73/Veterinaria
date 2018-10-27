@@ -97,7 +97,6 @@ public class VistaMascota extends javax.swing.JInternalFrame {
         jSeparator2 = new javax.swing.JSeparator();
         btnBorrar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
         tfDuenio = new javax.swing.JTextField();
 
         setClosable(true);
@@ -143,8 +142,11 @@ public class VistaMascota extends javax.swing.JInternalFrame {
         });
 
         btnCerrar.setText("Cerrar");
-
-        btnLimpiar.setText("Limpiar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -202,11 +204,9 @@ public class VistaMascota extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnActualizar)
-                        .addGap(82, 82, 82)
+                        .addGap(166, 166, 166)
                         .addComponent(btnBorrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLimpiar)
-                        .addGap(91, 91, 91)
                         .addComponent(btnCerrar)))
                 .addContainerGap())
         );
@@ -250,8 +250,7 @@ public class VistaMascota extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
                     .addComponent(btnBorrar)
-                    .addComponent(btnCerrar)
-                    .addComponent(btnLimpiar))
+                    .addComponent(btnCerrar))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -293,12 +292,15 @@ public class VistaMascota extends javax.swing.JInternalFrame {
         cbMascotas.removeItemAt(cbMascotas.getSelectedIndex());
     }//GEN-LAST:event_btnBorrarActionPerformed
 
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnCerrar;
-    private javax.swing.JButton btnLimpiar;
     private javax.swing.JComboBox<Mascota> cbMascotas;
     private com.toedter.calendar.JDateChooser dcFecNac;
     private javax.swing.JLabel jLabel1;

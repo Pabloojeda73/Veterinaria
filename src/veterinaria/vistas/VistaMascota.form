@@ -80,11 +80,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
                       <Component id="btnBorrar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnLimpiar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                       <Component id="btnCerrar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -138,7 +136,6 @@
                   <Component id="btnActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnBorrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCerrar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="30" max="32767" attributes="0"/>
           </Group>
@@ -249,11 +246,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cerrar"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnLimpiar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Limpiar"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfDuenio">
     </Component>
