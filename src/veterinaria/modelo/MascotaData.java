@@ -162,4 +162,20 @@ public class MascotaData {
         }
     }
     
+    public void borrarMascota(int id) {
+        String sql = "DELETE FROM Mascotas WHERE id = ? ;";
+        
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            System.out.println("statement: " + statement);
+            statement.executeUpdate();
+            statement.close();
+            
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar la mascota: " + ex);
+        }
+    }
+    
 }

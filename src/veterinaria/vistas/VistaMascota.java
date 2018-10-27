@@ -55,6 +55,8 @@ public class VistaMascota extends javax.swing.JInternalFrame {
     }
     
     public void cargaCbMascotas(){
+        
+        
         for(Mascota m: mascotas) {
             cbMascotas.addItem(m);
         }
@@ -134,6 +136,11 @@ public class VistaMascota extends javax.swing.JInternalFrame {
         });
 
         btnBorrar.setText("Borrar");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
 
         btnCerrar.setText("Cerrar");
 
@@ -278,6 +285,13 @@ public class VistaMascota extends javax.swing.JInternalFrame {
         mascota.setSexo(tfSexo.getText());
         mascotaData.actualizarMascota(mascota);
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        Mascota mascota = (Mascota) cbMascotas.getSelectedItem();
+        mascotaData.borrarMascota(mascota.getId());
+        
+        cbMascotas.removeItemAt(cbMascotas.getSelectedIndex());
+    }//GEN-LAST:event_btnBorrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
