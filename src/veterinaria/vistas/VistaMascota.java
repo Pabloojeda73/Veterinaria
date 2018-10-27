@@ -6,6 +6,8 @@
 package veterinaria.vistas;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -266,6 +268,14 @@ public class VistaMascota extends javax.swing.JInternalFrame {
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         Mascota mascota = (Mascota)cbMascotas.getSelectedItem();
         
+        mascota.setAlias(tfAlias.getText());
+        mascota.setColorDePelo(tfColorDePelo.getText());
+        
+        mascota.setEspecie(tfEspecie.getText());
+        mascota.setFecNac(dcFecNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        mascota.setPesoMedio(Double.parseDouble(tfPesoMedio.getText()));
+        mascota.setRaza(tfRaza.getText());
+        mascota.setSexo(tfSexo.getText());
         mascotaData.actualizarMascota(mascota);
     }//GEN-LAST:event_btnActualizarActionPerformed
 

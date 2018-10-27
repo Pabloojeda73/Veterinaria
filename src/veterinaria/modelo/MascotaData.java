@@ -138,7 +138,7 @@ public class MascotaData {
                 + "colorDePelo = ? , fecNac = ? , pesoMedio = ?"
                 + "WHERE id = ? ;";
         
-        System.out.println(mascota.getAlias());
+        System.out.println(mascota.getId());
         
         try {
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -150,6 +150,8 @@ public class MascotaData {
             statement.setDate(6, Date.valueOf(mascota.getFecNac()));
             statement.setDouble(7, mascota.getPesoMedio());
             statement.setInt(8, mascota.getId());
+            
+            System.out.print("statement: " + statement);
             
             statement.executeUpdate();
             
