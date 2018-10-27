@@ -145,19 +145,5 @@ public class TratamientoData {
         
     }
     
-    public static void main(String[] args) {
-        try {
-            Conexion conexion = new Conexion("jdbc:mysql://localhost/veterinaria", "root", "");
-            TratamientoData traData = new TratamientoData(conexion);
-            
-/*            Tratamiento tratamiento = traData.obtenerTratamiento(1);
-            tratamiento.setDescripcion("Vacunacion de la mascota");
-            traData.actualizarTratamiento(tratamiento); */
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(TratamientoData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
     
 }
